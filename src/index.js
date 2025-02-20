@@ -10,9 +10,9 @@ library.add(faBars, faShoppingCart, faTimes, faBolt, faBookOpen, faTags, faStar,
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  
     <App />
-  </React.StrictMode>
+// wrap app in strict mode if needed, deleted because links wouldn't work
 );
 
 // If you want to start measuring performance in your app, pass a function
