@@ -7,12 +7,15 @@ import Books from './pages/Books'
 import { books } from "./data"
 import BookInfo from './pages/Bookinfo';
 import Cart from './pages/Cart';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 function App() {
   const [cart, setCart] = useState([]);
   function addToCart(book) {
-   setCart([...cart, book])
+   setCart([book])
   }
+  useEffect(() => {
+    console.log(cart)
+  }, [cart])
   return (
     <Router>
     <div className="App">

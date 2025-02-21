@@ -8,10 +8,9 @@ import Book from '../components/ui/Book'
 
 const BookInfo = ({books, addToCart, cart}) => {
     const {id }=useParams();
-    const book = books.find(book => +book.id === +id)
+    const book = books.find(book => book.id === +id) //the plus converts the string to a number, because params returns it in a string
     function addBookToCart(book) {
         addToCart(book)
-        console.log(cart)
     }
     function bookExistsInCart() {
         return cart.find(book => book.id === +id)
@@ -77,7 +76,7 @@ const BookInfo = ({books, addToCart, cart}) => {
                         <div className="books">
                         {
                             books
-                            .filter(book => book.rating === 5 && +book.id !== +id)
+                            .filter(book => book.rating === 5 && book.id !== +id)
                             .map(book => <Book book={book} key={book.id} />)
                             .slice(0, 4)
                         }
