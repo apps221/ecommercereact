@@ -11,7 +11,20 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [cart, setCart] = useState([]);
   function addToCart(book) {
-   setCart([book])
+   setCart([...cart, {...book, quantity: 1}])
+  }
+  function changeQuantity(book, quantity) {
+   setCart(cart.map(item => {
+    if (item.id === book.id) {
+      return {
+        ...item,
+        quantity: +quantity,
+      }
+    }
+    else {
+      return item
+    }
+   }))
   }
   useEffect(() => {
     console.log(cart)
@@ -23,7 +36,7 @@ function App() {
      <Route path="/" exact component={Home} />
      <Route path="/books" exact render={() => <Books books={books} />}/>
      <Route path="/books/:id" render={()=> <BookInfo books={books} addToCart={addToCart} cart={cart}/>}/>
-     <Route path="/cart" render ={() => <Cart books={books} />}/>
+     <Route path="/cart" render ={() => <Cart books={books} cart={cart} changeQuantity={changeQuantity}/>}/>
      <Footer />
     </div>
     </Router>
